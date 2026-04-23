@@ -1,0 +1,21 @@
+#PySpark Method Chaining
+class QueryBuilder:
+    def __init__(self):
+        self.query = "SELECT * FROM users"
+
+def where(self, condition):
+        self.query += f" WHERE {condition}"
+        return self
+    def order_by(self, field):
+        self.query += f" ORDER BY {field}"
+        return self
+    def build(self):
+        return self.query
+
+sql = (
+    QueryBuilder()
+    .where("age > 18")
+    .order_by("created_at")
+    .build()
+)
+print(sql)
